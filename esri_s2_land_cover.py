@@ -9,24 +9,7 @@ import rasterio
 from rasterio.merge import merge
 
 utm_zones = [
-    "10U",
-    "11U",
-    "12U",
-    "13U",
-    "14U",
-    "10T",
-    "11T",
-    "12T",
-    "13T",
-    "14T",
-    "10S",
-    "11S",
-    "12S",
-    "13S",
-    "14S",
-    "12R",
-    "13R",
-    "14R",
+    "33T",
 ]
 for utm_zone in utm_zones:
     ITEM_URL = f"https://planetarycomputer.microsoft.com/api/stac/v1/collections/io-lulc/items/{utm_zone}-2020"
@@ -67,7 +50,7 @@ out_meta.update({
 })
 
 # Salva il raster unito in un nuovo file TIFF
-OUTPUT_FILE = r'output_folder\ESRI_LandCover_merged.tif'  # Sostituisci con il percorso corretto
+OUTPUT_FILE = r'output\ESRI_LandCover_merged.tif'  # Sostituisci con il percorso corretto
 with rasterio.open(OUTPUT_FILE, 'w', **out_meta) as dest:
     dest.write(mosaic)
 
